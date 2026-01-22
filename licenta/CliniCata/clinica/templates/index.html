@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+{% block hero %}
+<div class="hero-section">
+    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae asperiores magni incidunt ullam, debitis ipsam delectus doloremque nostrum cum facilis nihil perferendis consectetur fugit atque quidem porro ducimus, aliquam eveniet.</h2>
+</div>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+<section class="specializari-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-5" style="color: #4CAF50;">Specializările Noastre</h2>
+        <div class="row">
+
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 text-center p-3 shadow-sm card-hover">
+
+                    <div class="d-flex justify-content-center align-items-xxl-center">
+                        <img src="{% static 'images/cardiology.png' %}" class="card-img-left mb-3" alt="Cardiologie">
+                    </div>
+                    
+                    <div class="card-body">
+                        <h4 class="card-title">Cardiologie</h4>
+                        <p class="card-text">Diagnostic și tratament pentru afecțiunile inimii, oferite de medici specialiști.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 text-center p-3 shadow-sm card-hover">
+                    <div class="card-body">
+                         <div class="d-flex justify-content-center align-items-xxl-center">
+                            <img src="{% static 'images/dermatology.png' %}" class="card-img-left mb-3" alt="Dermatologie">
+                         </div>
+
+                        <h4 class="card-title">Dermatologie</h4>
+                        <p class="card-text">Soluții moderne pentru sănătatea pielii tale și tratamente estetice avansate.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 text-center p-3 shadow-sm card-hover">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-center align-items-xxl-center">
+                            <img src="{% static 'images/lungs.png' %}" class="card-img-left mb-3" alt="Pneumologie">
+                         </div>
+
+                        <h4 class="card-title">Pneumologie</h4>
+                        <p class="card-text">Diagnostic și tratament pentru afecțiunile pulmonare, pentru o bună sănătate respiratorie.</p>
+                    </div>
+                </div>
+            </div>
+            
+            </div> </div>
+{% endblock %}
+
+{% block title %}Home - CliniCata{% endblock %}
+
+
