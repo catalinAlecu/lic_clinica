@@ -20,10 +20,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{% url 'login' %}">
             <button type="button" class="btn btn-success">Logheaza-te</button>
         </a>
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{% url 'register' %}">
             <button type="button" class="btn btn-success">Inregistreaza-te</button>
         </a>
       </div>
@@ -34,6 +34,7 @@
     {% block hero %}
     
     {% endblock %}
+
 
 
     {% block content %}

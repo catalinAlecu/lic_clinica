@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+{% block content %}
+
+<div class="page-wrapper">
+    
+    <div class="auth-card">
+        <h1>Înregistrează-te</h1>
+        
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn-submit">Creează cont</button>
+        </form>
+
+        <div class="auth-footer">
+            <p>Ai deja cont? <a href="{% url 'login' %}">Loghează-te</a></p>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
