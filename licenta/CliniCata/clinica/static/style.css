@@ -10,6 +10,21 @@ body {
     height: 70px;
 }
 
+.buttons-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.user-greeting {
+    margin-top: 2%;
+}
+
+.user-greeting strong {
+    color: #2E7D32;
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
