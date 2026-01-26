@@ -21,6 +21,8 @@ load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATICFILES_DIR = os.path.join(BASE_DIR, 'static')
+env_path = BASE_DIR / 'clinic.env'
+load_dotenv(env_path)
 
 
 # Quick-start development settings - unsuitable for production
