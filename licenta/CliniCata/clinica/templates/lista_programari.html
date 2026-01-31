@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% load static %} 
+{% block content %}
+<div class="container mt-5">
+  <h2 class="mb-4">Istoricul Programărilor Mele</h2>
+
+  {% if programari %}
+  <div class="row">
+    {% for p in programari %}
+    <div class="col-md-6 mb-3">
+      <div class="card shadow-sm border-start border-4 border-success">
+        <div class="card-body">
+          <h5 class="card-title text-success">
+            {{ p.get_specializare_display }}
+          </h5>
+          <p class="card-text">
+            <strong>Data:</strong> {{ p.data_programare }}<br />
+            <strong>Pacient:</strong> {{ p.nume_complet }}<br />
+            <strong>Mesaj:</strong> {{ p.mesaj }}<br />
+            <small class="text-muted">Creată la: {{ p.created_at|date:"d M Y, H:i" }}</small>
+
+            <hr> <div class="d-flex justify-content-end">
+                <form action="{% url 'anulare_programare' p.pk %}" method="POST" onsubmit="return confirm('Ești sigur că vrei să anulezi această programare? Utilizatorul va primi un email de confirmare.');">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-danger btn-sm">
+                                        Anulează Programarea
+                    </button>
+                </form> 
+            </div>
+          </p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="alert alert-info">
+    Nu ai nicio programare activă.
+    <a href="{% url 'programare' %}">Fă o programare acum!</a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

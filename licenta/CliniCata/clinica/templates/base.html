@@ -30,6 +30,9 @@
                 👋 Bun venit, <strong>{{ user.username }}!</strong>
             </span>
 
+            <a class="btn btn-primary me-2" href="{% url 'programare' %}">Programare</a>
+            <a class="btn btn-primary me-2" href="{% url 'lista_programari' %}">Programarile mele</a>
+
             <form action="{% url 'logout' %}" method="POST" class="d-inline">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger">Logout</button>
