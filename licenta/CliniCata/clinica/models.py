@@ -26,4 +26,4 @@ class Doctor(models.Model):
     specializare = models.CharField(max_length=20, choices=Programare.SPECIALIZARI)
 
     def __str__(self):
-        return f"Dr. {self.nume} - {self.specializare}"
+        return f"Dr. {self.nume}"

@@ -12,4 +12,5 @@ urlpatterns = [
     path('lista_programari/', views.ListaProgramariView.as_view(), name='lista_programari'),
     path('anulare_programare/<int:pk>/', views.AnulareProgramareView.as_view(), name='anulare_programare'),
     path('lista_doctori/', views.ListaDoctori.as_view(), name='lista_doctori'),
+    path('ajax/incarca-doctori/', views.doctori_pe_specializare, name='ajax_incarca_doctori'),
 ]
