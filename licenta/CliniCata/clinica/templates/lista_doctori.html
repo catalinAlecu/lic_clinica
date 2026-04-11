@@ -1,0 +1,61 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="container mt-5 mb-5">
+  <div class="text-center mb-5">
+    <h2 style="color: #4caf50; font-weight: bold">Echipa Noastră Medicală</h2>
+    <p class="text-muted">Cunoaște experții noștri dedicați sănătății tale.</p>
+  </div>
+
+  <div class="row justify-content-center">
+    {% for doctor in doctori %}
+    <div class="col-md-4 mb-4">
+      <div
+        class="card h-100 shadow-sm border-0 transition-hover"
+        style="border-radius: 15px; overflow: hidden"
+      >
+        <img
+          src="{% get_static_prefix %}images/{{ doctor.nume_poza }}"
+          class="card-img-top"
+          alt="Dr. {{ doctor.nume }}"
+          style="height: 280px; object-fit: cover"
+        />
+
+        <div class="card-body text-center d-flex flex-column">
+          <div class="mb-2">
+            <span
+              class="badge bg-secondary"
+              style="padding: 8px 12px; border-radius: 20px"
+            >
+              {{ doctor.get_specializare_display }}
+            </span>
+          </div>
+
+          <h4 class="card-title font-weight-bold mb-2">
+            Dr. {{ doctor.nume }}
+          </h4>
+
+          <div class="mt-auto">
+            <hr style="opacity: 0.1" />
+          </div>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <div class="col-12 text-center">
+      <p class="text-muted">Momentan nu există doctori adăugați în sistem.</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .transition-hover {
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+  .transition-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+  }
+</style>
+{% endblock %}

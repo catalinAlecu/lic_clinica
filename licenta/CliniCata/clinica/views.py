@@ -1,4 +1,5 @@
 from urllib import request
+from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
@@ -8,7 +9,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView
 from .forms import SignUpForm
 from django.contrib.auth.models import User
-from .models import Programare
+from .models import Programare, Doctor
 from .forms import ProgramareForm
 from django.contrib import messages
 from django.views.generic import ListView
@@ -112,6 +113,18 @@ class ListaProgramariView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return Programare.objects.filter(pacient=self.request.user).order_by('-data_programare')
+
+class ListaDoctori(ListView):
+    model = Doctor
+    template_name = 'lista_doctori.html'
+    context_object_name = 'doctori'
+
+def doctori_pe_specializare(request):
+    specializare_aleasa = request.GET.get('specializare')
+    doctori = Doctor.objects.filter(specializare=specializare_aleasa).order_by('nume')
+    doctori_list = [{'id': doc.id, 'nume': f"Dr. {doc.nume}"} for doc in doctori]
+    return JsonResponse(doctori_list, safe=False)
+
 
 class AnulareProgramareView(LoginRequiredMixin, DeleteView):
     model = Programare
