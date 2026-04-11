@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
 
 class Programare(models.Model):
     SPECIALIZARI = [
@@ -11,6 +10,7 @@ class Programare(models.Model):
     ]
 
     pacient = models.ForeignKey(User, on_delete=models.CASCADE)
+    doctor = models.ForeignKey('Doctor', on_delete=models.SET_NULL, null=True, blank=True)
     nume_complet = models.CharField(max_length=100)
     telefon = models.CharField(max_length=15)
     specializare = models.CharField(max_length=20, choices=SPECIALIZARI)
@@ -20,3 +20,10 @@ class Programare(models.Model):
 
     def __str__(self):
         return f"{self.nume_complet} - {self.data_programare}"
+    
+class Doctor(models.Model):
+    nume = models.CharField(max_length=100)
+    specializare = models.CharField(max_length=20, choices=Programare.SPECIALIZARI)
+
+    def __str__(self):
+        return f"Dr. {self.nume} - {self.specializare}"
