@@ -11,4 +11,5 @@ urlpatterns = [
     path('programare/', views.programareView.as_view(), name='programare'),
     path('lista_programari/', views.ListaProgramariView.as_view(), name='lista_programari'),
     path('anulare_programare/<int:pk>/', views.AnulareProgramareView.as_view(), name='anulare_programare'),
+    path('lista_doctori/', views.ListaDoctori.as_view(), name='lista_doctori'),
 ]

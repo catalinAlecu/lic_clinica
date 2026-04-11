@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 
 class Programare(models.Model):
     SPECIALIZARI = [
-        ('cardio', 'Cardiologie'),
-        ('derma', 'Dermatologie'),
-        ('pneumo', 'Pneumologie'),
+        ('cardiologie', 'Cardiologie'),
+        ('dermatologie', 'Dermatologie'),
+        ('pneumologie', 'Pneumologie'),
     ]
 
     pacient = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -8,7 +8,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView
 from .forms import SignUpForm
 from django.contrib.auth.models import User
-from .models import Programare
+from .models import Programare, Doctor
 from .forms import ProgramareForm
 from django.contrib import messages
 from django.views.generic import ListView
@@ -112,6 +112,12 @@ class ListaProgramariView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return Programare.objects.filter(pacient=self.request.user).order_by('-data_programare')
+
+class ListaDoctori(ListView):
+    model = Doctor
+    template_name = 'lista_doctori.html'
+    context_object_name = 'doctori'
+
 
 class AnulareProgramareView(LoginRequiredMixin, DeleteView):
     model = Programare
