@@ -12,18 +12,18 @@
         class="card h-100 shadow-sm border-0 transition-hover"
         style="border-radius: 15px; overflow: hidden"
       >
-        <img
-          src="{% get_static_prefix %}images/{{ doctor.nume_poza }}"
-          class="card-img-top"
-          alt="Dr. {{ doctor.nume }}"
-          style="height: 280px; object-fit: cover"
-        />
+        <img 
+        src="{% static 'images/' %}{{ doctor.nume_poza }}" 
+        class="card-img-top" 
+        alt="Dr. {{ doctor.nume }}"
+        style="height: 250px; object-fit: cover"
+      />
 
         <div class="card-body text-center d-flex flex-column">
           <div class="mb-2">
             <span
               class="badge bg-secondary"
-              style="padding: 8px 12px; border-radius: 20px"
+              style="padding: 8px 10px; border-radius: 20px"
             >
               {{ doctor.get_specializare_display }}
             </span>

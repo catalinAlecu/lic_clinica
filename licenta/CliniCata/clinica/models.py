@@ -24,6 +24,7 @@ class Programare(models.Model):
 class Doctor(models.Model):
     nume = models.CharField(max_length=100)
     specializare = models.CharField(max_length=20, choices=Programare.SPECIALIZARI)
+    nume_poza = models.CharField(max_length=100, default='default.jpg')
 
     def __str__(self):
         return f"Dr. {self.nume}"

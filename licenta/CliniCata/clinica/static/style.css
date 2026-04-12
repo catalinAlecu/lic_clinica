@@ -122,7 +122,6 @@ body {
     border: 1px solid #ddd;
     border-radius: 6px;
     box-sizing: border-box;
-    /* Previne lățirea inputului peste container */
 }
 
 
