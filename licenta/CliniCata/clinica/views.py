@@ -134,18 +134,18 @@ class AnulareProgramareView(LoginRequiredMixin, DeleteView):
     def get_queryset(self):
         return self.model.objects.filter(pacient=self.request.user)
 
-    def delete(self, request, *args, **kwargs):
+    def form_valid(self, request, *args, **kwargs):
         programare = self.get_object()
         user_email = self.request.user.email
         
         data_p = programare.data_programare
         specializare = programare.get_specializare_display() if hasattr(programare, 'get_specializare_display') else programare.specializare
-
+        nume_doctor = programare.doctor.nume
         subiect = 'Confirmare Anulare Programare - CliniCata'
         mesaj = (
             f"Bună {self.request.user.username},\n\n"
             f"Programarea ta a fost ANULATĂ cu succes.\n"
-            f"Detalii programare anulată:\n"
+            f"Doctor: {nume_doctor}\n"
             f"Specializare: {specializare}\n"
             f"Data: {data_p}\n\n"
             f"Te așteptăm oricând cu o nouă programare,\nEchipa CliniCata"
