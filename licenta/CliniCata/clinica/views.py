@@ -80,12 +80,13 @@ class programareView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         user_email = self.request.user.email
         data_p = form.cleaned_data.get('data_programare')
         specializare = form.cleaned_data.get('specializare')
+        nume_doctor = form.cleaned_data.get('doctor')
 
         subiect = 'Confirmare Programare - CliniCata'
         mesaj = (
             f"Bună {self.request.user.username},\n\n"
             f"Programarea ta a fost înregistrată cu succes!\n"
-            f"Detalii:\n"
+            f"Doctor: {nume_doctor.nume}\n"
             f"Specializare: {specializare}\n"
             f"Data: {data_p}\n\n"
             f"Mesaj: {form.cleaned_data.get('mesaj')}\n\n"

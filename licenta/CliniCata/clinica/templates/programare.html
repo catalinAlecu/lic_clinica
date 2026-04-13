@@ -42,25 +42,25 @@
 </div>
 
 <script>
-  // 1. Găsim cele două meniuri derulante în pagină
+
   const specializareSelect = document.getElementById("id_specializare");
   const doctorSelect = document.getElementById("id_doctor");
 
-  // 2. Ascultăm momentul în care utilizatorul schimbă specializarea
-  specializareSelect.addEventListener("change", function () {
-    const specializare = this.value; // ex: 'cardio' sau 'derma'
 
-    // Dacă a selectat o specializare validă, cerem doctorii de la server
+  specializareSelect.addEventListener("change", function () {
+    const specializare = this.value; // 
+
+
     if (specializare) {
       const url = `/ajax/incarca-doctori/?specializare=${specializare}`;
 
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
-          // Curățăm lista veche de doctori
+   
           doctorSelect.innerHTML = '<option value="">---------</option>';
 
-          // Adăugăm noii doctori primiți în listă
+      
           data.forEach((doctor) => {
             const option = document.createElement("option");
             option.value = doctor.id;
@@ -69,7 +69,7 @@
           });
         });
     } else {
-      // Dacă alege din nou opțiunea goală (---------), golim și doctorii
+ 
       doctorSelect.innerHTML = '<option value="">---------</option>';
     }
   });

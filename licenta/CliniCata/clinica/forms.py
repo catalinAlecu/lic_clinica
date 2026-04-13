@@ -2,6 +2,7 @@ from django import forms
 from .models import Programare
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from datetime import date
 
 
 class ProgramareForm(forms.ModelForm):
@@ -17,6 +18,12 @@ class ProgramareForm(forms.ModelForm):
             'doctor': forms.Select(attrs={'class': 'form-control'}),
             'mesaj': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
         }
+
+    def clean_data_programare(self):
+        data_aleasa = self.cleaned_data['data_programare']
+        if data_aleasa and data_aleasa < date.today():
+            raise forms.ValidationError("Data programării nu poate fi în trecut.")
+        return data_aleasa
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(required=True, label="Email", widget=forms.EmailInput(attrs={'class': 'form-control'}))
