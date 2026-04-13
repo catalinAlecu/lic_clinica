@@ -1,4 +1,7 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block content %}
 <div class="container mt-5 mb-5">
   <div class="text-center mb-5">
     <h2 style="color: #4caf50; font-weight: bold">Echipa Noastră Medicală</h2>
@@ -8,37 +11,47 @@
   <div class="row justify-content-center">
     {% for doctor in doctori %}
     <div class="col-md-4 mb-4">
-      <div
-        class="card h-100 shadow-sm border-0 transition-hover"
-        style="border-radius: 15px; overflow: hidden"
-      >
-        <img 
-        src="{% static 'images/' %}{{ doctor.nume_poza }}" 
-        class="card-img-top" 
-        alt="Dr. {{ doctor.nume }}"
-        style="height: 250px; object-fit: cover; object-position: top"
-      />
-
-        <div class="card-body text-center d-flex flex-column">
-          <div class="mb-2">
-            <span
-              class="badge bg-secondary"
-              style="padding: 8px 10px; border-radius: 20px"
-            >
-              {{ doctor.get_specializare_display }}
-            </span>
+      
+      <div class="flip-card transition-hover" style="height: 460px;">
+        <div class="flip-card-inner">
+          
+          <div class="flip-card-front card h-100 shadow-sm border-0" style="border-radius: 15px; overflow: hidden;">
+            <img 
+              src="{% static 'images/' %}{{ doctor.nume_poza }}" 
+              class="card-img-top" 
+              alt="Dr. {{ doctor.nume }}"
+              style="height: 300px; object-fit: cover; object-position: center;"
+            />
+            
+            <div class="card-body text-center d-flex flex-column" style="background: white; -webkit-backface-visibility: hidden; backface-visibility: hidden;">
+              <div class="mb-2">
+                <span class="badge bg-secondary" style="padding: 8px 10px; border-radius: 20px">
+                  {{ doctor.get_specializare_display }}
+                </span>
+              </div>
+              <h4 class="card-title font-weight-bold mb-2">
+                Dr. {{ doctor.nume }}
+              </h4>
+              <div class="mt-auto">
+                <hr style="opacity: 0.1" />
+              </div>
+            </div>
           </div>
 
-          <h4 class="card-title font-weight-bold mb-2">
-            Dr. {{ doctor.nume }}
-          </h4>
-
-          <div class="mt-auto">
-            <hr style="opacity: 0.1" />
+          <div class="flip-card-back card shadow-sm border-0 p-4 d-flex flex-column justify-content-center align-items-center" style="border-radius: 15px; background-color: #FAFAFD;">
+            <h4 class="font-weight-bold mb-3" style="color: #4caf50;">Dr. {{ doctor.nume }}</h4>
+            
+            <p class="text-muted" style="font-size: 0.95rem;">
+              {{ doctor.descriere|default:"Medic specialist cu o vastă experiență, dedicat tratării pacienților cu profesionalism, empatie și excelență medicală." }}
+            </p>
+            
+            <hr style="width: 50%; opacity: 0.2; margin: 20px 0;">
+            <span class="badge bg-secondary mb-2">{{ doctor.get_specializare_display }}</span>
           </div>
+
         </div>
       </div>
-    </div>
+      </div>
     {% empty %}
     <div class="col-12 text-center">
       <p class="text-muted">Momentan nu există doctori adăugați în sistem.</p>
@@ -47,9 +60,9 @@
   </div>
 </div>
 
-</div> <div class="lista_doctori text-center mt-5">
-            <a href="{% url 'programare' %}" class="btn btn-lg shadow-sm holographic-btn" style="background-color: #4CAF50; color: white; border-radius: 30px; padding: 10px 30px; margin: 15px;">
-                Programează-te acum la unul dintre doctorii noștri!
-            </a>
-        </div>
+<div class="lista_doctori text-center mt-5 mb-5">
+  <a href="{% url 'programare' %}" class="btn btn-lg shadow-sm holographic-btn" style="background-color: #4CAF50; color: white; border-radius: 30px; padding: 10px 30px; margin: 15px;">
+    Programează-te acum la unul dintre doctorii noștri!
+  </a>
+</div>
 {% endblock %}
