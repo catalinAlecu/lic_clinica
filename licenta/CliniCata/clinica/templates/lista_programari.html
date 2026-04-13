@@ -34,8 +34,9 @@
   </div>
   {% else %}
   <div class="alert alert-info">
-    Nu ai nicio programare activă.
-    <a href="{% url 'programare' %}">Fă o programare acum!</a>
+    Nu ai nicio programare activă. <br>
+    <a href="{% url 'programare' %}">Fă o programare acum!</a> <br>
+    <a href="{% url 'lista_doctori' %}">Vezi lista doctorilor noștri!</a>
   </div>
   {% endif %}
 </div>
