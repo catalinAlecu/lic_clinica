@@ -1,0 +1,14 @@
+{
+    "builds": [
+        {
+            "src": "licenta/CliniCata/CliniCata/wsgi.py",
+            "use": "@vercel/python"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "licenta/CliniCata/CliniCata/wsgi.py"
+        }
+    ]
+}
