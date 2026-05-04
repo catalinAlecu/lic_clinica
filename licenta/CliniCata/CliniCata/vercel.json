@@ -1,7 +1,7 @@
 {
     "builds": [
         {
-            "src": "CliniCata/wsgi.py",
+            "src": "licenta/CliniCata/CliniCata/wsgi.py",
             "use": "@vercel/python",
             "config": {
                 "maxLambdaSize": "15mb",
@@ -12,7 +12,7 @@
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "CliniCata/wsgi.py"
+            "dest": "licenta/CliniCata/CliniCata/wsgi.py"
         }
     ]
 }
