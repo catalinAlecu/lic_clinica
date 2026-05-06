@@ -24,7 +24,7 @@ STATICFILES_DIR = os.path.join(BASE_DIR, 'static')
 env_path = BASE_DIR / 'clinic.env'
 load_dotenv(env_path)
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
