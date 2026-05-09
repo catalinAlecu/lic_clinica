@@ -17,9 +17,10 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
+import resend
 
 
-# Create your views here.
+resend.api_key = settings.RESEND_API_KEY
 
 class HomePageView(TemplateView):
     template_name = 'index.html'
@@ -41,12 +42,17 @@ class RegisterView(CreateView):
         user_email = user.email
         user_name = user.username
 
-        subiect = 'Bun venit la CliniCata!'
-        mesaj = f"Bine ai venit, {user_name}\n\nMultumim ca v-ati inregistrat la CliniCata. Suntem incantati sa va avem alaturi!\n\nCu stima,\nEchipa CliniCata"
-        expeditor = settings.EMAIL_HOST_USER
-        destinatari = [user_email]
+        # subiect = 'Bun venit la CliniCata!'
+        # mesaj = f"Bine ai venit, {user_name}\n\nMultumim ca v-ati inregistrat la CliniCata. Suntem incantati sa va avem alaturi!\n\nCu stima,\nEchipa CliniCata"
+        # expeditor = settings.EMAIL_HOST_USER
+        # destinatari = [user_email]
         try:
-            send_mail(subiect, mesaj, expeditor, destinatari, fail_silently=False)
+            resend.Emails.send({
+            "from": f"CliniCata <noreply@clinicata.site>",
+            "to": [user_email],
+            "subject": "Bun venit la CliniCata!",
+            "text": f"Bine ai venit, {user_name}\n\nMultumim ca v-ati inregistrat la CliniCata. Suntem incantati sa va avem alaturi!\n\nCu stima,\nEchipa CliniCata"
+        })
         except Exception as e:
             print(f"Eroare la trimiterea emailului: {e}")
 
