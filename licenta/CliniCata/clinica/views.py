@@ -42,10 +42,6 @@ class RegisterView(CreateView):
         user_email = user.email
         user_name = user.username
 
-        # subiect = 'Bun venit la CliniCata!'
-        # mesaj = f"Bine ai venit, {user_name}\n\nMultumim ca v-ati inregistrat la CliniCata. Suntem incantati sa va avem alaturi!\n\nCu stima,\nEchipa CliniCata"
-        # expeditor = settings.EMAIL_HOST_USER
-        # destinatari = [user_email]
         try:
             resend.Emails.send({
             "from": f"CliniCata <noreply@clinicata.site>",
@@ -100,13 +96,12 @@ class programareView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         )
 
         try:
-            send_mail(
-                subiect,
-                mesaj,
-                settings.EMAIL_HOST_USER,
-                [user_email],
-                fail_silently=False,
-            )
+            resend.Emails.send({
+                "from": f"CliniCata <noreply@clinicata.site>",
+                "to": [user_email],
+                "subject": subiect,
+                "text": mesaj
+            })
         except Exception as e:
             print(f"Eroare la trimitere email programare: {e}")
 
@@ -158,13 +153,12 @@ class AnulareProgramareView(LoginRequiredMixin, DeleteView):
         )
 
         try:
-            send_mail(
-                subiect,
-                mesaj,
-                settings.EMAIL_HOST_USER,
-                [user_email],
-                fail_silently=False,
-            )
+            resend.Emails.send({
+                "from": f"CliniCata <noreply@clinicata.site>",
+                "to": [user_email],
+                "subject": subiect,
+                "text": mesaj
+            })
             messages.success(self.request, "Programarea a fost anulată și emailul de confirmare a fost trimis!")
         except Exception as e:
             print(f"Eroare la trimitere email anulare: {e}")
