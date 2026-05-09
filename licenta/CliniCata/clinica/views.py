@@ -46,7 +46,7 @@ class RegisterView(CreateView):
         expeditor = settings.EMAIL_HOST_USER
         destinatari = [user_email]
         try:
-            send_mail(subiect, mesaj, expeditor, destinatari, fail_silently=False)
+            send_mail(subiect, mesaj, expeditor, destinatari, fail_silently=True)
         except Exception as e:
             print(f"Eroare la trimiterea emailului: {e}")
 
