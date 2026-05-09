@@ -42,6 +42,10 @@ DEBUG = False
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "licclinica-production.up.railway.app", "clinicata.site"]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://clinicata.site',
+    'https://www.clinicata.site',
+]
 
 # Application definition
 
