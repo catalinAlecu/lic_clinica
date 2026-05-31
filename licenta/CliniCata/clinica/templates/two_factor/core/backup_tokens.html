@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+<div class="page-wrapper">
+    <div class="auth-card">
+        <h1>Coduri de rezervă</h1>
+
+        <p class="info-text">
+            Aceste coduri îți permit accesul la cont în cazul în care nu ai
+            telefonul cu tine. <strong>Fiecare cod poate fi folosit o singură dată.</strong>
+            Notează-le într-un loc sigur.
+        </p>
+
+        {% if device.token_set.count %}
+            <ul class="backup-tokens-list">
+                {% for token in device.token_set.all %}
+                    <li><code>{{ token.token }}</code></li>
+                {% endfor %}
+            </ul>
+
+            <p class="warning-text">
+                După ce folosești toate codurile, va trebui să generezi altele noi.
+            </p>
+        {% else %}
+            <p>Nu mai ai coduri de rezervă disponibile.</p>
+        {% endif %}
+
+        <form method="post" action="">
+            {% csrf_token %}
+            <button type="submit" class="btn-submit">
+                Generează coduri noi
+            </button>
+        </form>
+
+        <a href="{% url 'two_factor:profile' %}" class="btn-submit btn-secondary">
+            Înapoi la securitatea contului
+        </a>
+    </div>
+</div>
+{% endblock %}

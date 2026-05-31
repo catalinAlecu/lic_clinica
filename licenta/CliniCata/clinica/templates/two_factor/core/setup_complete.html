@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+<div class="page-wrapper">
+    <div class="auth-card">
+        <h1>2FA activat cu succes</h1>
+        <p>Felicitări! Autentificarea în doi pași este acum activă pe contul tău.</p>
+        
+        <a href="{% url 'two_factor:profile' %}" class="btn-submit">
+            Înapoi la securitatea contului
+        </a>
+    </div>
+</div>
+{% endblock %}

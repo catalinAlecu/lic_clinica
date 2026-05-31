@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+<div class="page-wrapper">
+    <div class="auth-card">
+        <h1>Securitatea contului</h1>
+
+        {% if default_device %}
+            <p class="info-text">
+                Metodă principală: <strong>cod din aplicația de autentificare</strong>
+            </p>
+
+            <div class="section-divider"></div>
+
+            <h2>Coduri de rezervă</h2>
+            <p>Ai <strong>{{ backup_tokens }}</strong> coduri de rezervă rămase.<br>
+               Acestea îți permit accesul dacă pierzi telefonul.</p>
+            <a href="{% url 'two_factor:backup_tokens' %}" class="btn-submit">
+                Afișează codurile
+            </a>
+
+            <div class="section-divider"></div>
+
+            <h2>Dezactivare 2FA</h2>
+            <p>Recomandăm să păstrezi 2FA activ, dar îl poți dezactiva oricând.</p>
+            <a href="{% url 'two_factor:disable' %}" class="btn-submit btn-danger">
+                Dezactivează 2FA
+            </a>
+        {% else %}
+            <p>Nu ai 2FA activat pe acest cont.</p>
+            <a href="{% url 'two_factor:setup' %}" class="btn-submit">
+                Activează 2FA
+            </a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

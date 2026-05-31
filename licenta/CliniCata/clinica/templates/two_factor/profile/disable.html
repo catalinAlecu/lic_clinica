@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+<div class="page-wrapper">
+    <div class="auth-card">
+        <h1>Dezactivare 2FA</h1>
+
+        <p class="warning-text">
+            ⚠ Atenție: dezactivarea autentificării în doi pași va reduce
+            semnificativ securitatea contului tău.
+        </p>
+
+        <p class="info-text">
+            Pentru a confirma dezactivarea, introdu codul din aplicația
+            de autentificare.
+        </p>
+
+        <form method="post" action="">
+    {% csrf_token %}
+    
+    {% for field in form %}
+        <div class="form-row checkbox-row">
+            {{ field }}
+            <label for="{{ field.id_for_label }}">Da, sunt sigur că vreau să dezactivez 2FA</label>
+        </div>
+        {% if field.errors %}
+            <p class="field-error">{{ field.errors|join:", " }}</p>
+        {% endif %}
+    {% endfor %}
+    
+    <button type="submit" class="btn-submit btn-danger">
+        Confirmă dezactivarea
+    </button>
+</form>
+
+        <a href="{% url 'two_factor:profile' %}" class="btn-submit btn-secondary">
+            Anulează
+        </a>
+    </div>
+</div>
+{% endblock %}
