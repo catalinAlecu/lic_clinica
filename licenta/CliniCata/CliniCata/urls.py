@@ -19,7 +19,7 @@ from django.urls import path, include
 from two_factor.urls import urlpatterns as tf_urls
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('administrator_/', admin.site.urls),
     path('', include('clinica.urls')),
     path('', include(tf_urls)),
 ]
