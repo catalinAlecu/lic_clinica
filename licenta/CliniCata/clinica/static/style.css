@@ -2,6 +2,11 @@ body {
     background-color: #FAFAFD;
 }
 
+footer-verde {
+    background-color: #2E7D32;
+    color: white;
+}
+
 .navbar-brand img {
     display: flex;
     justify-content: flex-start;
