@@ -29,7 +29,7 @@ class RegisterView(CreateView):
     model = User
     form_class = SignUpForm
     template_name = 'register.html'
-    success_url = reverse_lazy('login')
+    success_url = reverse_lazy('two_factor:login')
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
@@ -67,7 +67,7 @@ class programareView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     template_name = 'programare.html'
     success_url = reverse_lazy('home')
     success_message = "Programarea a fost realizata cu succes!"
-    login_url = 'login'
+    login_url = 'two_factor:login'
 
     def get_initial(self):
         initial = super().get_initial()

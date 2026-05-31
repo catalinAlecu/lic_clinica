@@ -2,23 +2,37 @@
 {% load static %}
 
 {% block content %}
-
 <div class="page-wrapper">
     
     <div class="auth-card">
-        <h1>Logheaza-te</h1>
+        <h1>
+            {% if wizard.steps.current == 'auth' %}
+                Loghează-te
+            {% elif wizard.steps.current == 'token' %}
+                Introdu Codul 2FA
+            {% else %}
+                Recuperare Cont
+            {% endif %}
+        </h1>
         
-        <form method="POST">
+        <form action="" method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn-submit">Loghează-te</button>
+            
+            {% include "two_factor/_wizard_forms.html" %}
+            
+            <button type="submit" class="btn-submit mt-3">
+                {% if wizard.steps.current == 'auth' %}
+                    Continuă
+                {% else %}
+                    Validează
+                {% endif %}
+            </button>
         </form>
 
-        <div class="auth-footer">
-            <p>Nu ai un cont? <a href="{% url 'register' %}">Inregistreaza-te</a></p>
+        <div class="auth-footer mt-3">
+            <p>Nu ai un cont? <a href="{% url 'register' %}">Înregistrează-te</a></p>
         </div>
     </div>
 
 </div>
 {% endblock %}
-

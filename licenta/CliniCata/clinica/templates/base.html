@@ -33,6 +33,7 @@
 
             <a class="btn btn-primary me-2" href="{% url 'programare' %}">Programare</a>
             <a class="btn btn-primary me-2" href="{% url 'lista_programari' %}">Programarile mele</a>
+            <a class="btn btn-warning me-2" href="{% url 'two_factor:setup' %}">Activează 2FA</a>
 
             <form action="{% url 'logout' %}" method="POST" class="d-inline">
                 {% csrf_token %}
@@ -40,7 +41,7 @@
             </form>
 
         {% else %}
-            <a class="btn btn-success me-2" href="{% url 'login' %}">Loghează-te</a>
+            <a class="btn btn-success me-2" href="{% url 'two_factor:login' %}">Loghează-te</a>
             <a class="btn btn-success" href="{% url 'register' %}">Înregistrează-te</a>
             
         {% endif %}
