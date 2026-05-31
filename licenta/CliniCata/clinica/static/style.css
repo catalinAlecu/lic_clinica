@@ -125,13 +125,11 @@ body {
     box-sizing: border-box;
 }
 
-/* --- CONFIGURARE FORMULAR CURAT 2FA --- */
 
 .form-group-custom {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /* Aliniază textul la stânga */
     width: 100%;
     margin-bottom: 20px;
 }
@@ -144,7 +142,7 @@ body {
     text-align: left;
 }
 
-/* Forțăm căsuțele input să asculte de lățimea cardului tău */
+
 .form-group-custom input {
     width: 100% !important;
     padding: 12px !important;
@@ -228,6 +226,18 @@ body {
     transition: all 0.5s ease;
     opacity: 0;
     z-index: -1;
+}
+
+.form-content img {
+    display: block;
+    margin: 20px auto;
+    border: 5px solid #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.form-content p {
+    margin-bottom: 20px;
 }
 
 .holographic-btn:hover {

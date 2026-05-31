@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="page-wrapper">
+    <div class="auth-card">
+        <h1>Configurare 2FA</h1>
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ wizard.management_form }}
+            
+            <div class="form-content">
+                {% if wizard.steps.current == 'generator' %}
+                    <div class="text-center mb-4">
+                        <p>Scanează acest cod cu Google Authenticator:</p>
+                        
+                            <img src="/account/two_factor/qrcode/" alt="QR Code">
+
+                        <p class="mt-3">Sau introdu cheia manual: <strong>{{ wizard.form.key|default:secret_key }}</strong>
+                    </div>
+                {% endif %}
+
+                {{ wizard.form.as_p }}
+            </div>
+
+            <button type="submit" class="btn-submit">
+                {{ wizard.steps.step1 }} / {{ wizard.steps.count }} - Continuă
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
