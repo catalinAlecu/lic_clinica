@@ -50,15 +50,20 @@
     </div> </div>
 </nav>
 
-    {% block hero %}
-    
-    {% endblock %}
+    <main class="flex-grow-1" style="padding-top: 80px;">
+        {% block hero %}
+        
+        {% endblock %}
 
+        {% block content %}
+        
+        {% endblock %}
+    </main>
 
-
-    {% block content %}
-    
-    {% endblock %}
+    <footer class="mt-auto" style="border-top: 3px solid #28a745;">
+        <div class="container text-center py-4">
+            <p class="mb-0">&copy; 2026 CliniCata. Toate drepturile rezervate.</p>
+        </div>
 
     <footer>
     <div class="container text-center py-4">
