@@ -78,9 +78,8 @@ Mobile
 
 <img width="945" height="407" alt="image" src="https://github.com/user-attachments/assets/a601cf9a-0a3c-4995-92bd-46d342598179" />
 
-<img width="923" height="436" alt="image" src="https://github.com/user-attachments/assets/bacb1345-57c5-4f7e-a769-df3077a06212" />
+<img width="927" height="382" alt="image" src="https://github.com/user-attachments/assets/87aa156d-2bc7-4828-a3c4-07d1a94f93c5" />
 
-<img width="923" height="436" alt="image" src="https://github.com/user-attachments/assets/06b566d0-bd4d-4944-9878-ffec9b3e6ada" />
 
 **2FA**
 
